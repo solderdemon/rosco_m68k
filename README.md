@@ -1,74 +1,39 @@
-# Really Old-School Computer - M68K
-## A Motorola 68k Single-Board Computer
+# rosco_m68k Classic R2
 
-> **Note**: This is the Version 2.42 release branch. If you are using Firmware 2.42 (regardless of base board revision), this is the branch you should be using to build the standard libraries and example programs.
+![Populated rosco_m68k Classic v2 mainboard](images/mainboard-2.1.jpg)
 
-## Boards & Kits Available
+A Motorola 68k single-board computer. This fork keeps the **Classic revision 2 (R2) hardware design** together with the firmware, software, and PLD code needed to work with it. Older hardware revisions and most historical assets have been removed from this branch; the [upstream project](https://github.com/rosco-m68k/rosco_m68k) retains the full history.
 
-> **The best way to support this project is to buy PCBs and kits - visit the <a href='https://store.rosco-m68k.com'>Official Store</a>!**
+## Find your way around
 
-> Alternatively, you can <a href="https://ko-fi.com/rosco_m68k">buy us a coffee</a> if you like, it would be much appreciated! 😊
+| What you need | Where to go |
+| --- | --- |
+| R2 KiCad design, schematic PDF, Gerbers, and drill files | [design/r2](design/r2/README.md) |
+| R2 BOM, jumper settings, and expansion pinout | [docs/r2](docs/README.md) |
+| Firmware and ROM code | [code/firmware](code/firmware/) |
+| PLD source | [code/pld](code/pld/) |
+| Software, libraries, and examples | [code/software](code/software/) |
+| Toolchain and build overview | [code/README.md](code/README.md) and [code/Toolchain.md](code/Toolchain.md) |
 
-## What is this?
+The R2 KiCad files are marked **2.13-DEV** (10 December 2023). This fork began from the upstream release/version-2.42 Git branch; that software version is separate from the PCB revision. Verify the schematic, PCB, and fabrication outputs together before ordering boards.
 
-This repository holds design files, firmware and software for the Really Old-School Computer 
-(M68k) single-board computer, AKA the rosco_m68k. This is a fully-featured, programmable,
-extensible and capable 16/32-bit retro computer that is completely open source.
+## At the bench
 
-This project contains all the design files and source code for the project. For 
-documentation (including assembly instructions) please see https://rosco-m68k.com
+- Start with the [R2 build guide](design/r2/README.md) and [bill of materials](docs/r2/BOM.md).
+- Check [power and jumper settings](docs/r2/JUMPERS.md) before applying power, particularly JP1/JP2 for FTDI power and JP3 for Flash writes.
+- Use the [J3 expansion header pinout](docs/r2/EXPANSION.md) for peripherals. J3 is the header; JP3 is a different, two-pin jumper.
+- For code builds, see the [firmware and software overview](code/README.md). The [older SD card guide](docs/legacy-sd-card.md) covers earlier board revisions and is kept for code users.
 
-You can find the project along with some logs about its development history
-on Hackaday: https://hackaday.io/project/164305-yet-another-m68k-homebrew
+<details>
+<summary>Photos from the project's early prototypes</summary>
 
-* All Software released under the MIT licence. See LICENSE for details.
-* All Hardware released under the CERN Open Hardware licence.See LICENCE.hardware.txt.
-* All Documentation released under Creative Commons Attribution. See https://creativecommons.org/licenses/by/2.0/uk/
-* OSHWA-certified Open Source Hardware
+These images show earlier hardware, not the R2 board documented here.
 
-## Specifications
+![Early populated prototype](images/first-populated-prototype.jpg)
+![Early prototype PCBs](images/4077381582746008339.jpg)
 
-![Current main board](images/mainboard-2.1.jpg)
+</details>
 
-### Hardware
+## Licences and attribution
 
-The hardware specifications for the rosco_m68k are:
-
-* MC68010P10 at 10MHz.
-* XR68C681P provides UART, Timers and SD Card / SPI / GPIO
-* 1MB RAM (0x0 - 0xFFFFF)
-* 1MB ROM (0xE00000 - 0xEFFFFF)
-* 1MB IO space (0xF00000 - 0xFFFFFF)
-* High-speed decode and glue logic handled by Atmel F22V10C PLDs.
-* Comprehensive expansion and IO connectors allow the system to be easily expanded!
-
-### Software
-
-* A serial bootloader that can load software via the UART (with Kermit protocol)
-* Lots of example code and community projects
-* Rich firmware interface for with serial and video console for easy programming
-* Programmable in assembly, C and (a limited subset of) C++.
-* Easy68K-compatible* TRAP 15 (IO) handler
-* A growing collection of system libraries and utility code
-* Custom Homebrew tap with toolchain - assembly built with VASM; C/C++ built with GCC 10.2.
-
-(*) The firmware is _mostly_ Easy68K compatible - certain functions are not implemented due to the serial nature of IO.
-
-## Getting boards fabricated
-
-If you want to get boards fabricated, we recommend JLCPCB - they did all of our commercial boards
-when the rosco_m68k was offered for sale on Tindie. These are the options you'll want when
-ordering from them (these should be readily adaptable to other fabs too!)
-
-![JLCPCB Fab Options](images/jlcpcb-options.png)
-
-## Certification
-
-The rosco_m68k is an OSHWA-certified Open Source Hardware project!
-
-<p align='center'>
-<img alt='OSHWA Certified' src='/images/oshwa.png?raw=true' title='OSHWA Certification UK000006' width='20%'>
-</p>
-<p align='center'>
-https://certification.oshwa.org/uk000006.html
-</p>
+Hardware design: [CERN Open Hardware Licence v1.2](LICENCE.hardware.txt). Software: [MIT and bundled third-party licences](LICENSE). Documentation: [Creative Commons Attribution 4.0](LICENSE.docs). Original rosco_m68k design and documentation: Ross Bamford, The Really Old-School Company Limited, and contributors. See [upstream](https://github.com/rosco-m68k/rosco_m68k) for complete history and documentation.

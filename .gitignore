@@ -26,3 +26,9 @@ code/software/lcd-ili9341/rle_images.h
 user.mk
 **/*.bak
 **/*.lck
+
+# Local KiCad state
+**/.history/
+**/*.kicad_prl
+**/*-backups/
+**/*-cache.lib
