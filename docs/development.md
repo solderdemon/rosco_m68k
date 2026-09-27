@@ -15,18 +15,29 @@ rosco build
 
 Use `--language asm` for an assembly project. The CLI creates the current starter files itself, so there is no need to copy this repository's older `code/starter_projects` directories into a new project.
 
-The generated project records Docker as its build toolchain. `rosco build` uses the published [solderdemon/rosco_m68k:latest](https://hub.docker.com/r/solderdemon/rosco_m68k) image, which contains the cross-toolchain. Docker must be installed and running. On ARM hosts, the [CLI documentation](https://github.com/solderdemon/rosco-cli#configuration) describes setting `build.docker.platform = "linux/amd64"` if the image requires emulation.
+The generated project records Docker as its build toolchain. Docker must be installed and running. On ARM hosts, the [CLI documentation](https://github.com/solderdemon/rosco-cli#configuration) describes setting `build.docker.platform = "linux/amd64"` if the image requires emulation.
 
 ## Run on the board
 
-Connect the USB serial adapter, then use the port that `rosco ports` reports:
+Connect the USB serial adapter and run:
 
 ```sh
-rosco ports
-rosco run --port COM3
+rosco run
 ```
 
-Replace `COM3` with your actual port, such as `/dev/ttyUSB0` on Linux. `rosco run` builds, uploads through Kermit, and monitors UART output. See the [CLI README](https://github.com/solderdemon/rosco-cli#typical-workflow) for separate build, upload, and monitor commands.
+`rosco run` automatically selects the USB-UART port when there is one matching device. It builds, uploads through Kermit, and monitors UART output. If discovery cannot choose a port, run `rosco ports` to list USB-UART candidates (or `rosco ports --all` for other serial ports), then pass the correct port explicitly with `rosco run --port <port>`. See the [CLI README](https://github.com/solderdemon/rosco-cli#typical-workflow) for separate build, upload, and monitor commands.
+
+## Emulate the board
+
+The separate [SolderDemon rosco-emulator](https://github.com/solderdemon/rosco-emulator) supports both rosco_m68k and rosco_6502. rosco CLI can create a project that runs in the emulator through Docker:
+
+```sh
+rosco init hello --board rosco_m68k --language c --docker --target emulator --emulator-docker --yes
+cd hello
+rosco run
+```
+
+For a rosco_6502 project, choose `--board rosco_6502`. The emulator also has its own [Docker image and usage instructions](https://github.com/solderdemon/rosco-emulator#docker).
 
 ## Existing projects and host builds
 

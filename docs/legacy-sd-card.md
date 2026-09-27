@@ -1,6 +1,6 @@
 # Legacy SD card hookup and user guide
 
-> This guide describes firmware 1.3 and earlier board revisions (R1/R1.2/R1.23). For Classic R2 electrical notes, see [R2 jumpers and SD card](r2/JUMPERS.md).
+> This guide describes firmware 1.3 and earlier board revisions (R1/R1.2/R1.23). For Classic R2 electrical notes, see [R2 jumpers and SD card](JUMPERS.md).
 
 With Firmware 1.3, SD Cards are now supported directly by the firmware. This feature works will all boards that are supported by Firmware 1.3, though the electrical hookup and usage varies.
 

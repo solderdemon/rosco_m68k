@@ -9,4 +9,4 @@ This implementation has been taken from the Newlib code.
 Libm documentation is available here. <https://sourceware.org/newlib/libm.html>
 
 License details are available here. <https://sourceware.org/newlib/README> and
-also in the file ```COPYING.NEWLIB```.
+also in the file [COPYING.NEWLIB](../../../licenses/COPYING.NEWLIB).

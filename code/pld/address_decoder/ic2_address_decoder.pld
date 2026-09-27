@@ -35,9 +35,9 @@ DESCRIPTION
 IC2 (Address Decoder) for rosco_m68k r2
 
 * Onboard RAM    : $00000000 - $000FFFFF (1MB)
-* Expansion space: $00100000 - $00DFFFFF (14MB)
+* Expansion space: $00100000 - $00DFFFFF (13MB)
 * ROM            : $00E00000 - $00EFFFFF (1MB)
-* IO             : $00F00000 - $FFFFFFFF (1MB)
+* IO             : $00F00000 - $00FFFFFF (1MB)
 
 Copyright (c)2021 Ross Bamford. See LICENSE.
 

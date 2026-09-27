@@ -20,4 +20,4 @@ cd code/pld/address_decoder
 bash burn.sh
 ```
 
-Repeat from the corresponding directory for IC3, IC5, and IC6. The [toolchain notes](../Toolchain.md) include Minipro setup. The [hardware BOM](../../docs/r2/BOM.md) lists the four PLDs.
+Repeat from the corresponding directory for IC3, IC5, and IC6. The [toolchain notes](../Toolchain.md) include Minipro setup. The [hardware BOM](../../docs/BOM.md) lists the four PLDs.

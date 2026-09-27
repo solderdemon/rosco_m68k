@@ -1,6 +1,6 @@
-# R2 jumpers, power, and SD card
+# Jumpers, power, and SD card
 
-These notes are adapted from the original *Classic v2 Additional Information* sheet for the R2 mainboard. Confirm jumper positions against the [schematic](../../design/r2/kicad/rosco_m68k.pdf) and board silkscreen before applying power.
+These notes are adapted from the original *Classic v2 Additional Information* sheet for the through-hole mainboard. Confirm jumper positions against the [schematic](../design/kicad/rosco_m68k.pdf) and board silkscreen before applying power.
 
 | Jumper | Closed | Normal use |
 | --- | --- | --- |

@@ -3,7 +3,7 @@ ROSCO_M68K_DIR=../../../../..
 -include $(ROSCO_M68K_DIR)/user.mk
 
 SRC_DIR=..
-R68K_DIR=../../../../tools/r68k
+EMULATOR_IMAGE?=solderdemon/rosco-emulator:latest
 SYSLIBROOT=$(ROSCO_M68K_DIR)/code/software/libs
 SYSINCDIR?=$(SYSLIBROOT)/build/include
 SYSLIBDIR?=$(SYSLIBROOT)/build/lib
@@ -43,8 +43,8 @@ LDFLAGS=-T $(LDSCRIPT) -L $(SYSLIBDIR) --gc-sections --oformat=elf32-m68k
 
 .PHONY: clean test
 
-test: units.bin $(R68K_DIR)/r68k
-	$(R68K_DIR)/r68k $<
+test: units.bin
+	docker run --rm -v "$(CURDIR):/work" --entrypoint rosco-test $(EMULATOR_IMAGE) -m rosco_m68k_010 -q units.bin -t 20 -e "0 failed"
 
 $(SYSINCDIR)/stdio.h: $(SYSLIBROOT)/Makefile
 	$(MAKE) -C $(SYSLIBROOT) clean install
@@ -109,9 +109,6 @@ units.elf: $(ALLTEST_OBJS)
 	$(LD) $(LDFLAGS) $(GCC_LIBS) $^ -o $@ $(LIBS)
 	$(SIZE) $@
 	-chmod a-x $@
-
-$(R68K_DIR)/r68k: $(R68K_DIR)/Makefile
-	$(MAKE) -C $(R68K_DIR) all
 
 clean:
 	$(RM) *.o *.bin *.elf *.lst rtest/*.o rtest/*.bin rtest/*.elf rtest/*.lst

@@ -1,11 +1,9 @@
 ## ROM kernel for rosco_m68k
 
-You need https://github.com/roscopeco/r68k installed if you want
-to run on your modern machine. You can also upload the binaries
-to your rosco_m68k (or put them on your SD) if you like.
-
-By default, r68k is expected to be in `../../../../tools/r68k` - you can change
-this with `R68K_DIR`, e.g. `R68K_DIR=/whatever make ...`.
+The test target builds `units.bin` with the host cross-toolchain and runs it
+in the [SolderDemon rosco-emulator](https://github.com/solderdemon/rosco-emulator)
+Docker image. Keep Docker running; the test checks that the suite reports
+`0 failed`. You can also upload the binary to a board if desired.
 
 ```shell
 make clean test

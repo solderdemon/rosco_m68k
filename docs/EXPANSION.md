@@ -1,6 +1,6 @@
-# R2 J3 expansion header pinout
+# J3 expansion header pinout
 
-> This pinout describes the **R2 J3 expansion connector**. Check the schematic before using it with another board revision. **JP3 is a separate Flash write-enable jumper**, not this connector.
+> This pinout describes the **J3 expansion connector**. Check the schematic before using it with another board revision. **JP3 is a separate Flash write-enable jumper**, not this connector.
 
 J3 provides peripheral access to the full address, data and control buses in the system,
 plus VCC (5V) and GND. These signals are unbuffered and have no built-in protection, so are

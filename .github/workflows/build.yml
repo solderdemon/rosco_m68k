@@ -30,7 +30,7 @@ jobs:
         - name: Build firmware - r2 Base
           run: |
             cd code/firmware/rosco_m68k_firmware
-            make clean all test
+            make clean all
             tar czf rosco_m68k_fw_$(cat "$GITHUB_WORKSPACE/branch.txt")_$(cat "$GITHUB_WORKSPACE/stamp.txt")_mainboard_2.x.tar.gz *.rom
             cp rosco_m68k_fw_$(cat "$GITHUB_WORKSPACE/branch.txt")_$(cat "$GITHUB_WORKSPACE/stamp.txt")_mainboard_2.x.tar.gz "$GITHUB_WORKSPACE/artifacts"
         - name: Build firmware - r2 Flash
@@ -62,3 +62,14 @@ jobs:
             name: build-snapshots
             path: artifacts/
 
+  kernel-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+      - name: Build libraries
+        run: docker run --rm -v "$PWD:/workspace" -w /workspace/code/software/libs solderdemon/rosco_m68k:latest make clean install
+      - name: Build kernel test binary
+        run: docker run --rm -v "$PWD:/workspace" -w /workspace/code/firmware/rosco_m68k_firmware/kernel/tests solderdemon/rosco_m68k:latest make units.bin
+      - name: Run kernel tests in emulator
+        run: docker run --rm -v "$PWD/code/firmware/rosco_m68k_firmware/kernel/tests:/work" --entrypoint rosco-test solderdemon/rosco-emulator:latest -m rosco_m68k_010 -q units.bin -t 20 -e "0 failed"
