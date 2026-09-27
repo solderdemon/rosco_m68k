@@ -1,4 +1,6 @@
-# Starter Projects in C and Assembly
+# Legacy starter projects in C and Assembly
+
+> For a new project, use [rosco CLI](https://github.com/solderdemon/rosco-cli) and its `rosco init` command. It creates the current C or assembly template and supports the recommended [Docker build workflow](../../docs/development.md). The projects below are retained as older examples.
 
 This directory contains two template projects you can use to get started
 with your own software. There is a template for C, and another for 

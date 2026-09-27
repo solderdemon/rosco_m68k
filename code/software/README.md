@@ -3,7 +3,7 @@
 This directory contains various different software programs for the 
 rosco_m68k.
 
-> If you are looking for a template project for your own software (including some specific Makefile recommendations), please see the `starter_projects` directory. 
+> For a new program, use [rosco CLI](https://github.com/solderdemon/rosco-cli) to create a starter project and build it with Docker. See the [development quick start](../../docs/development.md). The older `code/starter_projects` examples remain available.
 
 Specifically:
 
@@ -25,15 +25,9 @@ Specifically:
  
 ## Getting Started
 
-### GNU Toolchain
+### Toolchain for the bundled examples
 
-If you don't yet have a GNU M68k toolchain, you'll need to build one.
-See https://github.com/roscopeco/rosco_m68k/blob/master/code/Toolchain.md 
-for help with that. 
-
-You'll need to have that toolchain somewhere in your path (`~/opt/cross`
-is recommended and assumed by the documentation, though of course you
-can place it wherever suits you).
+For new projects, [rosco CLI with Docker](../../docs/development.md) provides the recommended toolchain. The direct Make commands below require a host GNU M68k toolchain; see the [host toolchain guide](../Toolchain.md) if you choose that route.
 
 ### Shared Libraries
 
@@ -57,7 +51,7 @@ rest of the programs expect to find them.
 
 > **Note** Any problems at this point are likely due to an incomplete or
   incorrectly built toolchain. See 
-  https://github.com/roscopeco/rosco_m68k/blob/master/code/Toolchain.md
+  [host toolchain guide](../Toolchain.md)
   for help building a correct toolchain with the expected versions.
   While building with GCC > 7.5.0 should work (please file a bug if you
   find it doesn't!) building with older versions is not supported.
@@ -87,6 +81,5 @@ setting an environment variable for a more permanent solution.
 
 ## Building your own projects
 
-There are some template starter projects available in `../starter_projects`,
-take a look at the documentation there for how to use them.
+Create a new C or assembly project with `rosco init` as shown in the [development quick start](../../docs/development.md). The [older starter projects](../starter_projects/README.md) are retained as examples.
 

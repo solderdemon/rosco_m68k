@@ -1,8 +1,8 @@
-# Classic R2 mainboard design
+# Through-hole mainboard design
 
 ![Populated Classic v2 board](../../images/mainboard-2.1.jpg)
 
-Open the [KiCad project](kicad/rosco_m68k.kicad_pro) to inspect or edit the board. The schematics are split into CPU, memory, GALs, DUART, reset, and expansion sheets. A [schematic PDF](kicad/rosco_m68k.pdf) is included for quick reading.
+The through-hole board files live in this upstream R2 directory. Open the [KiCad project](kicad/rosco_m68k.kicad_pro) to inspect or edit the board. The schematics are split into CPU, memory, GALs, DUART, reset, and expansion sheets. A [schematic PDF](kicad/rosco_m68k.pdf) is included for quick reading.
 
 ## Build references
 

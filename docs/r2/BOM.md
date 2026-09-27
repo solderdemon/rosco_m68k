@@ -39,7 +39,7 @@ This table is transcribed from the KiCad CSV export at [kicad/rosco_m68k.csv](..
 ## Items outside the component count
 
 - The CSV also contains **four M3 mounting holes** and **six logo or compliance artwork objects**. They are PCB features, not parts to buy.
-- The bare PCB and any required programming of the ATF22V10C GALs and Flash ROMs are not included as BOM lines.
+- The bare PCB and any required programming of the ATF22V10C GALs and Flash ROMs are not included as BOM lines. See the [PLD programming guide](../../code/pld/README.md) for IC2, IC3, IC5, and IC6.
 - The original R2 packing list separately mentioned sockets for IC1 (DIL64, 1), IC2/IC3/IC5/IC6 (DIL24, 4), IC4 (PLCC44, 1), IC7 (DIL16, 1), IC15 (DIL08, 1), and U1/U2/U3/U4 (DIL32, 4). Treat these as assembly choices and verify fit against the PCB.
 - The older packing list differs from this KiCad CSV for some headers (including J6 and J8). This table follows the CSV; inspect the current PCB before ordering those headers.
 

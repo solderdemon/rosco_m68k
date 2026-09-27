@@ -1,7 +1,6 @@
-# Installing the toolchain
+# Installing a host toolchain
 
-Before you can build any software for the rosco_m68k, you'll need a toolchain.
-There are two options for this: the easy way, and the slightly-less easy way.
+For new software projects, the recommended path is [rosco CLI with Docker](../docs/development.md). Its SolderDemon image includes the cross-toolchain, so you do not need to install it on the host. The instructions below are for builds that deliberately use a host toolchain.
 
 ## The Easy Way - Install with Homebrew
 
