@@ -6,8 +6,8 @@
 
   (title_block
     (title "SolderDemon m68k Classic v2")
-    (date "2026-09-28")
-    (rev "2.42")
+    (date "2026-09-30")
+    (rev "r1")
     (company "SolderDemon")
     (comment 1 "OSHWA UK000006 (https://certification.oshwa.org/uk000006.html)")
     (comment 2 "See https://github.com/roscopeco/rosco_m68k/blob/master/LICENCE.hardware.txt")

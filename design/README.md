@@ -1,6 +1,6 @@
 # SolderDemon m68k through-hole mainboard design
 
-![Populated original rosco_m68k Classic v2 board](../images/mainboard-2.1.jpg)
+![Assembled r2.42 mainboard, the GAL version this board grew from](../images/mainboard-r2.42.jpg)
 
 This directory contains the SolderDemon m68k through-hole mainboard design, derived from the original [rosco_m68k](https://github.com/rosco-m68k/rosco_m68k) board. Open the [KiCad project](kicad/solderdemon_m68k.kicad_pro) to inspect the board. The schematics are split into CPU, memory, CPLDs, DUART, reset, and expansion sheets. A [schematic PDF](kicad/solderdemon_m68k.pdf) is included for quick reading.
 
@@ -14,9 +14,26 @@ This directory contains the SolderDemon m68k through-hole mainboard design, deri
 ## Contents
 
 - **kicad/**: editable schematic sheets, PCB, project, local symbols and footprints, CSV BOM export, and schematic PDF.
-- **tools/**: the scripts that turn r2.13 into r2.42 (below).
+- **tools/**: the scripts that turn r2.13 into r1 (below).
 - **CAMOutputs/**: Gerber layers and drill files.
 - **docs/**: [BOM, jumper notes, and expansion pinout](../docs/README.md).
+
+## r1: SolderDemon numbering, the DUART in the CPLD column
+
+From here on the board carries its own revision numbers, starting at **r1**; the r2.x numbers
+below are the rosco_m68k history it grew from.
+
+r1 puts the three PLCC-44 sockets in one column: IC3 (glue), IC2 (decoder) and the DUART IC4
+under them. IC4 used to sit 8 mm to the right, and moving it left would have put its pins on the
+RAM U4, so the board is 5 mm longer instead (165 × 100 mm). `tools/r1_layout.py` stretches the
+r2.42 board along a cut between the CPLDs and the CPU/RAM: everything right of the cut moves 5 mm
+right, tracks crossing the cut get a horizontal bridge, so no clearance shrinks. IC4 then moves
+into the column, its decoupling cap C22 into the space it left, and the DUART is routed again.
+The upstream badges (WEEE bin, OSHW block, rosco_m68k logos, GitHub URL) are gone from the
+silkscreen (`tools/strip_silk.py`). The CPU decoupling C20/C12/C29/C31 stands in an even column in the gap the stretch
+opened, and the back carries the SolderDemon identity as on the busboard: the logo, the name and
+"M68K Computer r1" (`tools/r1_identity.py`). All silkscreen text is in KiCad's own font; the
+Futura that r2.x asked for is not installed and made KiCad stop at a message box.
 
 ## Revision 2.42: finished CPLD mainboard
 
@@ -52,6 +69,14 @@ python design/tools/cpld_sch.py           # 3. CPLDs sheet of the schematic, fro
 "$K/python.exe" design/tools/cpld_route.py             # 11. finish the reconnection
 "$K/python.exe" design/tools/polish_board.py           # 12. wider VCC bridges, clean silkscreen
 "$K/python.exe" design/tools/brand_project.py          # 13. apply SolderDemon m68k project branding
+python design/tools/strip_silk.py                      # 14. upstream badges off the silkscreen
+"$K/python.exe" design/tools/r1_layout.py              # 15. r1: longer board, DUART into the column
+"$K/python.exe" design/tools/cpld_route.py             # 16. route the DUART again
+"$K/python.exe" design/tools/trim_stubs.py             # 17. cut router overshoots back to their junctions
+python design/tools/make_logo.py 17                    # 18. SolderDemon logo footprint, as on the busboard
+"$K/python.exe" design/tools/r1_identity.py            # 19. CPU decoupling column, SolderDemon identity on the back
+"$K/python.exe" design/tools/cpld_route.py             # 20. route what the column tore up
+"$K/python.exe" design/tools/trim_stubs.py             # 21. and trim again
 "$K/kicad-cli.exe" pcb drc --schematic-parity design/kicad/solderdemon_m68k.kicad_pcb
 ```
 

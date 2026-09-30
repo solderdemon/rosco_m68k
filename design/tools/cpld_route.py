@@ -72,7 +72,8 @@ def open_nets(board):
         if nets & PLANES:
             pwr += 1
         sig |= nets - PLANES
-    return sorted(sig), pwr
+    # DRC prints '/' in a net name; the board file, and so the router, spells it '{slash}'
+    return sorted(n.replace('/', '{slash}') for n in sig), pwr
 
 
 def finish():
