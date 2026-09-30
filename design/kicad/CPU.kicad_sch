@@ -5,14 +5,15 @@
   (paper "A4")
 
   (title_block
-    (title "ROSCO_M68K GENERAL PURPOSE MC68010 COMPUTER")
-    (date "2023-12-10")
-    (rev "2.13-DEV")
-    (company "The Really Old-School Company Limited")
+    (title "SolderDemon m68k Classic v2")
+    (date "2026-09-28")
+    (rev "2.42")
+    (company "SolderDemon")
     (comment 1 "OSHWA UK000006 (https://certification.oshwa.org/uk000006.html)")
     (comment 2 "See https://github.com/roscopeco/rosco_m68k/blob/master/LICENCE.hardware.txt")
     (comment 3 "Open Source Hardware licenced under CERN Open Hardware Licence")
     (comment 4 "Copyright 2019-2023 Ross Bamford and Contributors")
+    (comment 5 "SolderDemon modification 2026-09-28; based on rosco_m68k")
   )
 
   (lib_symbols
@@ -1239,7 +1240,7 @@
     (pin "1" (uuid c8fa22bf-9f7d-4a3d-8da3-a1f24f794fe0))
     (pin "2" (uuid 295e4d47-748b-491f-835d-e1cd021d7473))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "R7") (unit 1)
         )
@@ -1265,7 +1266,7 @@
     (pin "1" (uuid a90cbe53-5b05-4644-ac26-76a5a28659a2))
     (pin "2" (uuid d27b6d29-6e2d-4803-8b90-32d265a5b287))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "R9") (unit 1)
         )
@@ -1291,7 +1292,7 @@
     (pin "1" (uuid c6c3a2e5-2932-4fac-a495-818bfbb91de5))
     (pin "2" (uuid d114b39b-7ecc-45e2-8d91-6133ff648b91))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "R10") (unit 1)
         )
@@ -1316,7 +1317,7 @@
     )
     (pin "1" (uuid ae23b59d-fe2b-4965-bce5-373886238933))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "#PWR01") (unit 1)
         )
@@ -1341,7 +1342,7 @@
     )
     (pin "1" (uuid af950b64-290c-45ec-af5b-2091c768d43e))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "#PWR02") (unit 1)
         )
@@ -1366,7 +1367,7 @@
     )
     (pin "1" (uuid 6a0feb11-6855-44ed-85b5-92791393046b))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "#PWR03") (unit 1)
         )
@@ -1392,7 +1393,7 @@
     (pin "1" (uuid 5f4bb5ae-e235-450e-b526-c6d99bcf8569))
     (pin "2" (uuid cded3975-bb53-4f1e-89bf-735f7ca6f050))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "C7") (unit 1)
         )
@@ -1418,7 +1419,7 @@
     (pin "1" (uuid ff7bf34b-4f85-41f6-a7b5-84522f348c1a))
     (pin "2" (uuid 6186b7e1-c108-488f-95c9-89c989347919))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "C8") (unit 1)
         )
@@ -1446,7 +1447,7 @@
     (pin "5" (uuid 4e604ca4-8cfa-4af8-b4f0-b57d22d10500))
     (pin "8" (uuid a7581643-8dd2-4d3a-a73d-468f5aa52b36))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "Q2") (unit 1)
         )
@@ -1472,7 +1473,7 @@
     (pin "1" (uuid 7b77a475-9223-4175-8348-b89e89f3dd70))
     (pin "2" (uuid a5f3df81-3222-4e28-b1e1-1a0d9b0edd61))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "R3") (unit 1)
         )
@@ -1560,7 +1561,7 @@
     (pin "49" (uuid e5e50021-f51d-4bca-84e4-56a9587a6e55))
     (pin "53" (uuid 76c9ecc6-8a26-446a-8742-2fd7c9aafcb3))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-00005e53b4b8"
           (reference "IC1") (unit 1)
         )

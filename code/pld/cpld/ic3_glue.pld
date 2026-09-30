@@ -1,0 +1,112 @@
+Name     GLUE;
+PartNo   ATF1502AS;
+Date     2026-09-27;
+Revision r2.14;
+Designer rosco_m68k;
+Company  rosco_m68k;
+Assembly rosco_m68k classic THT r2.14;
+Location IC3;
+Device   f1502ispplcc44;
+
+/*
+ * rosco_m68k classic THT r2.14, IC3 of 2: DUART select, reset, bus watchdog.
+ *
+ * Replaces three ATF22V10C of r2.13: IC3 (duartsel/ic3_duart_sel.pld), IC5
+ * (glue/ic5_glue_logic.pld) and IC6 (watchdog/ic6_watchdog.pld). The equations are those of
+ * the GALs, unchanged, and every board net keeps its name and level. The boot counter and
+ * ANYIACK, which ran between the GALs, are in IC2 now (ANYIACK is decoded in both), so no wire
+ * runs between IC2 and IC3.
+ *
+ *   DUASEL   $F00001-$F0003F odd bytes (A6-A19 = 0, /LDS, /IOSEL)
+ *   ANYIACK  low in a CPU-space cycle with A19 set (interrupt acknowledge)
+ *   DUAIACK  the same, with the level on A3..A1 = 4 (A3 A2 A1 = 100) and AS
+ *   BERR     asserted when a bus cycle is still open after 8 x 8 = 64 CLK
+ *
+ * RESET, HALT and BERR are open drain (pull-ups R32, R31, R10): the pin only ever drives 0.
+ *
+ * The pin numbers below are read by design/tools/cpld_board.py and cpld_sch.py, so this file
+ * is the single source of IC3's pinout. JTAG (7, 13, 32, 38) goes to J9, chained IC2 -> IC3.
+ * 31 of the 32 signal pins are used.
+ */
+
+PROPERTY ATMEL {JTAG = ON};
+PROPERTY ATMEL {TDI_PULLUP = ON};
+PROPERTY ATMEL {TMS_PULLUP = ON};
+PROPERTY ATMEL {PREASSIGN = KEEP};
+
+/* ---- pins: chosen by design/tools/cpld_board.py --suggest, each signal on the pin nearest
+        to where its net already runs on the r2.13 board. 31 of 32 used, 2 is free. ---- */
+PIN 1  = HWRST;                     /* dedicated input, high while the 555 holds reset */
+PIN 4  = BERR;                      /* open drain, pull-up R10 */
+PIN 5  = FC2;
+PIN 6  = A12;
+PIN 8  = A11;
+PIN 9  = A10;
+PIN 11 = A9;
+PIN 12 = A8;
+PIN 14 = A7;
+PIN 16 = A6;
+PIN 17 = A18;
+PIN 18 = A17;
+PIN 19 = A16;
+PIN 20 = A3;
+PIN 21 = A2;
+PIN 24 = A19;
+PIN 25 = A1;
+PIN 26 = HALT;                      /* open drain, pull-up R31 */
+PIN 27 = FC0;
+PIN 28 = A15;
+PIN 29 = RUNLED;                    /* LED3 cathode */
+PIN 31 = A13;
+PIN 33 = LDS;
+PIN 34 = A14;
+PIN 36 = FC1;
+PIN 37 = DUASEL;                    /* DUART /CS */
+PIN 39 = DUAIACK;                   /* DUART /IACK */
+PIN 40 = RESET;                     /* open drain, pull-up R32 */
+PIN 41 = IOSEL;
+PIN 43 = CLK;                       /* GCLK1: watchdog */
+PIN 44 = AS;                        /* dedicated input */
+
+PINNODE = [AX4M, AX2M, AX1M];       /* prescaler, CLK / 8 */
+PINNODE = [WDQ0..3];                /* watchdog count */
+PINNODE = PBERR;
+
+/* ---- DUART ---- */
+DUASEL  = !(!A6 & !A7 & !A8 & !A9 & !A10 & !A11 & !A12 & !A13 & !A14 & !A15 & !A16 & !A17
+            & !A18 & !A19 & !LDS & !IOSEL);
+
+/* ---- CPU space ---- */
+iack    = !HWRST & FC2 & FC1 & FC0 & A19;          /* ANYIACK of r2.13, low active here */
+DUAIACK = !(iack & !AS & !A1 & !A2 & A3);
+
+/* ---- reset: HALT and RESET are held while the 555 says so ---- */
+HALT    = 'b'0;
+HALT.oe = HWRST;
+RESET    = 'b'0;
+RESET.oe = HWRST;
+
+RUNLED  = !HALT.io;
+
+/* ---- watchdog: runs while a bus cycle is open (and through an interrupt acknowledge),
+        cleared the moment it is not ---- */
+wden  = !AS # iack;
+carry = AX1M & AX2M & AX4M;
+
+AX4M.d  = !AX4M;
+AX2M.d  = AX2M $ AX4M;
+AX1M.d  = AX1M $ (AX2M & AX4M);
+
+WDQ0.d  = wden & (WDQ0 $ carry);
+WDQ1.d  = wden & (WDQ1 $ (WDQ0 & carry));
+WDQ2.d  = wden & (WDQ2 $ (WDQ1 & WDQ0 & carry));
+WDQ3.d  = wden & (WDQ3 $ (WDQ2 & WDQ1 & WDQ0 & carry));
+
+PBERR.d = wden & (WDQ3 # PBERR);
+
+[AX4M, AX2M, AX1M].ck = CLK;
+[WDQ0..3].ck = CLK;
+PBERR.ck = CLK;
+
+BERR    = 'b'0;
+BERR.oe = PBERR;

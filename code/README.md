@@ -1,7 +1,7 @@
-# Firmware & Software
+# SolderDemon m68k firmware and software
 
-This directory contains various different firmware and software programs for the
-rosco_m68k.
+This directory contains firmware and software programs for SolderDemon m68k. The
+source retains the `rosco_m68k` firmware ABI and upstream build identifiers.
 
 For new programs, start with the [rosco CLI and Docker guide](../docs/development.md). See the README.md files in the subdirectories for details.
 

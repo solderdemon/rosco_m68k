@@ -1,8 +1,8 @@
-# rosco_m68k retro computer
+# SolderDemon m68k retro computer
 
 ![Populated rosco_m68k Classic v2 mainboard](images/mainboard-2.1.jpg)
 
-A Motorola 68k single-board computer with a focus on **through-hole (THT) hardware**. This fork brings together the board design, firmware, software, and PLD code. The hardware design lives in design/; the [upstream project](https://github.com/rosco-m68k/rosco_m68k) retains the full history of other board designs.
+SolderDemon m68k is a Motorola 68k single-board computer with a focus on **through-hole (THT) hardware**. It is derived from [rosco_m68k](https://github.com/rosco-m68k/rosco_m68k), created by Ross Bamford, The Really Old-School Company Limited, and contributors. This fork brings together the board design, firmware, software, and PLD code. The hardware design lives in design/; the upstream project retains the full history of other board designs.
 
 ## Find your way around
 
@@ -40,3 +40,5 @@ These images show early project prototypes, not the populated Classic v2 board s
 ## Licences and attribution
 
 Hardware design: [CERN Open Hardware Licence v1.2](LICENCE.hardware.txt). Software: [MIT](LICENSE) with [third-party notices](licenses/README.md). Documentation: [Creative Commons Attribution 4.0](licenses/LICENSE.docs). Original rosco_m68k design and documentation: Ross Bamford, The Really Old-School Company Limited, and contributors. See [upstream](https://github.com/rosco-m68k/rosco_m68k) for complete history and documentation.
+
+**SolderDemon modification notice (2026-09-28):** This fork adapts the original rosco_m68k project, including revisions to the through-hole mainboard design, PLD logic, and accompanying build documentation. The original authorship and licence notices remain with the source files.

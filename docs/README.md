@@ -1,4 +1,4 @@
-# Documentation
+# SolderDemon m68k documentation
 
 ## Through-hole board
 
@@ -11,7 +11,7 @@
 ## Code
 
 - [Recommended rosco CLI and Docker workflow](development.md)
-- [Emulator workflow](development.md#emulate-the-board) for rosco_m68k and rosco_6502
+- [Emulator workflow](development.md#emulate-the-board) for the SolderDemon m68k and rosco_6502 targets
 
 - [Firmware and software overview](../code/README.md)
 - [Firmware interface reference](../code/firmware/rosco_m68k_firmware/InterfaceReference.md)

@@ -5,14 +5,15 @@
   (paper "A4")
 
   (title_block
-    (title "ROSCO_M68K GENERAL PURPOSE MC68010 COMPUTER")
-    (date "2023-12-10")
-    (rev "2.13-DEV")
-    (company "The Really Old-School Company Limited")
+    (title "SolderDemon m68k Classic v2")
+    (date "2026-09-28")
+    (rev "2.42")
+    (company "SolderDemon")
     (comment 1 "OSHWA UK000006 (https://certification.oshwa.org/uk000006.html)")
     (comment 2 "See https://github.com/roscopeco/rosco_m68k/blob/master/LICENCE.hardware.txt")
     (comment 3 "Open Source Hardware licenced under CERN Open Hardware Licence")
     (comment 4 "Copyright 2019-2023 Ross Bamford and Contributors")
+    (comment 5 "SolderDemon modification 2026-09-28; based on rosco_m68k")
   )
 
   (lib_symbols
@@ -1327,13 +1328,6 @@
       (effects (font (size 1.27 1.27)) hide)
     )
   )
-  (global_label "SPICS2" (shape input) (at 96.52 143.51 180) (fields_autoplaced)
-    (effects (font (size 1.27 1.27)) (justify right))
-    (uuid 74012f9c-57f0-452a-9ea1-1e3437e264b8)
-    (property "Intersheetrefs" "${INTERSHEET_REFS}" (at 0 0 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-  )
   (global_label "SPIMOSI" (shape input) (at 95.25 161.29 180) (fields_autoplaced)
     (effects (font (size 1.27 1.27)) (justify right))
     (uuid 74855e0d-40e4-4940-a544-edae9207b2ea)
@@ -1570,7 +1564,7 @@
     (pin "1" (uuid 836e661c-ca5b-4848-85fd-ad928edd3f4f))
     (pin "2" (uuid c38b5879-d51a-4e67-b36f-0c141025a913))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "Q1") (unit 1)
         )
@@ -1596,7 +1590,7 @@
     (pin "1" (uuid c3eec4c3-f376-4745-86e5-7a6c86849955))
     (pin "2" (uuid b0cf7b9d-e6ad-4275-9c57-7ae02dda5e8c))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "C1") (unit 1)
         )
@@ -1622,7 +1616,7 @@
     (pin "1" (uuid b30a53f4-b5e3-4e26-acb0-784b4ae57e42))
     (pin "2" (uuid 71979b75-66f4-4bdd-8fcb-4563039304ad))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "C2") (unit 1)
         )
@@ -1652,7 +1646,7 @@
     (pin "5" (uuid 19006e6f-a773-47b5-9fae-54f3e68169a3))
     (pin "6" (uuid f5f047bc-9d8a-4ede-b9f6-1a1e93b81314))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "J1") (unit 1)
         )
@@ -1682,7 +1676,7 @@
     (pin "5" (uuid c8c1517a-7bf4-4681-bc6e-3c92b3149b14))
     (pin "6" (uuid 312c1ebf-293d-4a47-aba4-f95ebbefa4d8))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "J2") (unit 1)
         )
@@ -1708,7 +1702,7 @@
     (pin "1" (uuid dce4c5e2-a0f7-49da-8bf3-b20c9a6d6e1f))
     (pin "2" (uuid f5b99c86-598d-45fe-99ee-a4b4be698556))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "C30") (unit 1)
         )
@@ -1734,7 +1728,7 @@
     (pin "1" (uuid 5ff80adb-d369-41ef-a44d-e057b0eb4f52))
     (pin "2" (uuid e8133407-e9be-4c81-a056-178286409215))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "C28") (unit 1)
         )
@@ -1760,7 +1754,7 @@
     (pin "1" (uuid 25b8e5b0-73fe-4fe1-bc59-2f85d72eff14))
     (pin "2" (uuid d7fcdbcd-853d-4042-811d-06ca81bfa47e))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "C29") (unit 1)
         )
@@ -1828,7 +1822,7 @@
     (pin "8" (uuid fc01945a-0f3e-4ccb-869e-e232ff747d9c))
     (pin "9" (uuid 1a080af0-47c3-45ab-bc07-91fd5360f843))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "IC4") (unit 1)
         )
@@ -1854,7 +1848,7 @@
     (pin "1" (uuid 0f19a5ef-ac49-44a6-93ee-8c78f71fb35b))
     (pin "2" (uuid e17049e9-82d4-4ee3-8f0f-ed173a9b6cd1))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "R1") (unit 1)
         )
@@ -1880,7 +1874,7 @@
     (pin "A" (uuid 3e83dbb2-0e80-4ec0-9168-cc45a0247358))
     (pin "K" (uuid 95b0ae41-000a-48a5-bc13-a3947e07eed4))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "LED1") (unit 1)
         )
@@ -1906,7 +1900,7 @@
     (pin "1" (uuid 0995d2bf-b192-442b-a012-dcfa55ce7131))
     (pin "2" (uuid 737ccae9-dd25-4f11-b17f-ff9a83cf4ed2))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "R2") (unit 1)
         )
@@ -1932,7 +1926,7 @@
     (pin "A" (uuid 435f16da-d5d0-4872-bedb-af4acf2bee78))
     (pin "K" (uuid 3efd7023-a9fe-4812-9b4c-64a8b57d7448))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "LED2") (unit 1)
         )
@@ -1957,7 +1951,7 @@
     )
     (pin "1" (uuid 7f4e2763-9eaf-403f-a259-43cdce5d501c))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "#PWR04") (unit 1)
         )
@@ -1987,7 +1981,7 @@
     (pin "5" (uuid 3ee5c7da-3722-4755-a34f-5c70e8292b75))
     (pin "6" (uuid f97c179a-a199-4045-a895-2c437746a667))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "J4") (unit 1)
         )
@@ -2012,7 +2006,7 @@
     )
     (pin "1" (uuid 3c539e24-63e3-4b29-a45d-ab06af3af95a))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "#PWR0101") (unit 1)
         )
@@ -2037,7 +2031,7 @@
     )
     (pin "1" (uuid c95437c3-a140-4e70-b667-2277b4b31f5a))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "#PWR0102") (unit 1)
         )
@@ -2045,30 +2039,6 @@
     )
   )
 
-  (symbol (lib_id "Connector:Conn_01x01_Pin") (at 101.6 143.51 180) (unit 1)
-    (in_bom yes) (on_board yes) (dnp no)
-    (uuid 00000000-0000-0000-0000-00006164ae6a)
-    (property "Reference" "J7" (at 99.06 139.7 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Value" "Conn_01x01_Male" (at 98.8568 145.796 0)
-      (effects (font (size 1.27 1.27)))
-    )
-    (property "Footprint" "Connector_PinHeader_2.54mm:PinHeader_1x01_P2.54mm_Vertical" (at 101.6 143.51 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (property "Datasheet" "~" (at 101.6 143.51 0)
-      (effects (font (size 1.27 1.27)) hide)
-    )
-    (pin "1" (uuid 6d073cae-84c4-4cee-994c-282ca35ea4f4))
-    (instances
-      (project "rosco_m68k"
-        (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
-          (reference "J7") (unit 1)
-        )
-      )
-    )
-  )
 
   (symbol (lib_id "Jumper:Jumper_2_Open") (at 254 143.51 0) (unit 1)
     (in_bom yes) (on_board yes) (dnp no)
@@ -2088,7 +2058,7 @@
     (pin "1" (uuid ba6161b1-4387-4af3-a3af-76ecd1d1384a))
     (pin "2" (uuid 8733bd24-27f3-4cef-b548-4063e3969cda))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "JP2") (unit 1)
         )
@@ -2114,7 +2084,7 @@
     (pin "1" (uuid f87701cb-a129-46c9-8c71-76e1d777dee9))
     (pin "2" (uuid d38ce23b-951d-4aec-887f-e4a37b324e0b))
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7/00000000-0000-0000-0000-000061622e90"
           (reference "JP1") (unit 1)
         )

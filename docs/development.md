@@ -1,6 +1,6 @@
-# Develop software with rosco CLI
+# Develop SolderDemon m68k software with rosco CLI
 
-[rosco CLI](https://github.com/solderdemon/rosco-cli) is the recommended way to create, build, upload, and monitor rosco_m68k programs. It keeps the build and serial workflow in one command-line tool.
+[rosco CLI](https://github.com/solderdemon/rosco-cli) is the recommended way to create, build, upload, and monitor SolderDemon m68k programs. It keeps the build and serial workflow in one command-line tool. Select its compatible `rosco_m68k` board target in the commands below.
 
 ## Start a new project
 

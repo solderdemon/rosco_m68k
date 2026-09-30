@@ -1,0 +1,96 @@
+Name     DECODER;
+PartNo   ATF1502AS;
+Date     2026-09-27;
+Revision r2.14;
+Designer rosco_m68k;
+Company  rosco_m68k;
+Assembly rosco_m68k classic THT r2.14;
+Location IC2;
+Device   f1502ispplcc44;
+
+/*
+ * rosco_m68k classic THT r2.14, IC2 of 2: address decoder, boot latch and DTACK.
+ *
+ * Replaces the ATF22V10C IC2 of r2.13 (address_decoder/ic2_address_decoder.pld) together with the
+ * boot counter and the ANYIACK decode of the glue GAL IC5 (glue/ic5_glue_logic.pld). The
+ * equations are those of the GALs, unchanged; BOOT and ANYIACK, which ran between the GALs, are
+ * internal now, so no wire runs between IC2 and IC3. The board nets keep their names and levels.
+ *
+ *   RAM             $000000-$0FFFFF   (ROM answers everywhere until BOOT is set)
+ *   Expansion       $100000-$DFFFFF
+ *   ROM             $E00000-$EFFFFF
+ *   IO              $F00000-$FFFFFF   (IOSEL, fully decoded by IC3 for the DUART)
+ *
+ * Every net keeps its r2.13 name and level: a pin here is high exactly when the net is high,
+ * so the active-low selects are written as !(...). DTACK is open drain -- the pin only ever
+ * drives 0, and .oe says when. HALT and RESET are only read here; IC3 drives them.
+ *
+ * The pin numbers below are read by design/tools/cpld_board.py and cpld_sch.py, so this file
+ * is the single source of IC2's pinout. JTAG (7, 13, 32, 38) goes to J9, chained IC2 -> IC3.
+ */
+
+PROPERTY ATMEL {JTAG = ON};
+PROPERTY ATMEL {TDI_PULLUP = ON};
+PROPERTY ATMEL {TMS_PULLUP = ON};
+PROPERTY ATMEL {PREASSIGN = KEEP};
+
+/* ---- pins: chosen by design/tools/cpld_board.py --suggest, each signal on the pin nearest
+        to where its net already runs on the r2.13 board. 1, 5, 21, 24, 25, 31, 33, 36 are free. ---- */
+PIN 2  = FC0;                       /* dedicated input */
+PIN 4  = A20;
+PIN 6  = A21;
+PIN 8  = A22;
+PIN 9  = A23;
+PIN 11 = UDS;
+PIN 12 = EVENROMSEL;
+PIN 14 = LGEXP;                     /* JP4 fitted: expansion space answers its own DTACK */
+PIN 16 = ODDRAMSEL;
+PIN 17 = ODDROMSEL;
+PIN 18 = EVENRAMSEL;
+PIN 19 = EXPSEL;
+PIN 20 = WR;
+PIN 26 = RW;
+PIN 27 = RESET;                     /* read only, driven by IC3 and the CPU */
+PIN 28 = DTACK;                     /* open drain, 1k2 pull-up R21 */
+PIN 29 = LDS;
+PIN 34 = HALT;                      /* read only, driven by IC3 and the CPU */
+PIN 37 = HWRST;                     /* high while the 555 holds reset */
+PIN 39 = IOSEL;
+PIN 40 = FC2;
+PIN 41 = A19;
+PIN 43 = AS;                        /* GCLK1: the boot counter counts bus cycles */
+PIN 44 = FC1;                       /* dedicated input */
+
+PINNODE = [BQ0..2];                 /* boot counter */
+PINNODE = BOOT;                     /* 0 after reset: ROM answers for every address */
+
+/* ---- CPU space: ANYIACK is high when the cycle is NOT an interrupt acknowledge ---- */
+ANYIACK = !(!HWRST & FC2 & FC1 & FC0 & A19);
+
+low    = !A23 & !A22 & !A21 & !A20;             /* $000000-$0FFFFF */
+cyc    = ANYIACK & !AS;
+
+EVENRAMSEL = !(cyc & !UDS & BOOT & low);
+ODDRAMSEL  = !(cyc & !LDS & BOOT & low);
+EVENROMSEL = !(cyc & !UDS & ((A23 & A22 & A21 & !A20) # !BOOT));
+ODDROMSEL  = !(cyc & !LDS & ((A23 & A22 & A21 & !A20) # !BOOT));
+
+IOSEL      = !(ANYIACK & A23 & A22 & A21 & A20);   /* no AS here, as on r2.13 */
+EXPSEL     = !(cyc & ((A23 & !A21) # (!A23 & A22) # (!A23 & A20) # (!A22 & A21)));
+
+DTACK      = 'b'0;
+DTACK.oe   = ANYIACK & (!EVENROMSEL # !ODDROMSEL # !EVENRAMSEL # !ODDRAMSEL # (!LGEXP & !EXPSEL));
+
+WR         = !RW;
+
+/* BOOT is cleared while RESET and HALT are both asserted, and set by the fourth rising AS after
+   either is released: the 68000 fetches its reset vectors from the ROM that answers at 0. */
+running = HALT # RESET;
+BQ0.d   = running;
+BQ1.d   = running & BQ0;
+BQ2.d   = running & BQ1;
+BOOT.d  = running & BQ2;
+[BQ0..2].ck = AS;
+BOOT.ck = AS;
+[BQ0..2].ar = !HALT & !RESET;
+BOOT.ar = !HALT & !RESET;

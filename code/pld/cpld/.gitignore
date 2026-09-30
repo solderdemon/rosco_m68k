@@ -1,0 +1,3 @@
+bin/*
+!bin/*.jed
+!bin/*.fit

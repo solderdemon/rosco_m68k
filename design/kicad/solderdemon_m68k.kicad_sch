@@ -5,14 +5,15 @@
   (paper "A4")
 
   (title_block
-    (title "ROSCO_M68K GENERAL PURPOSE MC68010 COMPUTER")
-    (date "2023-12-10")
-    (rev "2.13-DEV")
-    (company "The Really Old-School Company Limited")
+    (title "SolderDemon m68k Classic v2")
+    (date "2026-09-28")
+    (rev "2.42")
+    (company "SolderDemon")
     (comment 1 "OSHWA UK000006 (https://certification.oshwa.org/uk000006.html)")
     (comment 2 "See https://github.com/roscopeco/rosco_m68k/blob/master/LICENCE.hardware.txt")
     (comment 3 "Open Source Hardware licenced under CERN Open Hardware Licence")
     (comment 4 "Copyright 2019-2023 Ross Bamford and Contributors")
+    (comment 5 "SolderDemon modification 2026-09-28; based on rosco_m68k")
   )
 
   (lib_symbols
@@ -30,7 +31,7 @@
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7" (page "2"))
       )
     )
@@ -47,7 +48,7 @@
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7" (page "4"))
       )
     )
@@ -64,7 +65,7 @@
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7" (page "3"))
       )
     )
@@ -81,7 +82,7 @@
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7" (page "7"))
       )
     )
@@ -98,7 +99,7 @@
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7" (page "6"))
       )
     )
@@ -108,14 +109,14 @@
     (stroke (width 0) (type solid))
     (fill (color 0 0 0 0.0000))
     (uuid 00000000-0000-0000-0000-0000617d19f3)
-    (property "Sheetname" "GALs" (at 153.67 80.5684 0)
+    (property "Sheetname" "CPLDs" (at 153.67 80.5684 0)
       (effects (font (size 1.27 1.27)) (justify left bottom))
     )
-    (property "Sheetfile" "GALs.kicad_sch" (at 153.67 107.2646 0)
+    (property "Sheetfile" "CPLDs.kicad_sch" (at 153.67 107.2646 0)
       (effects (font (size 1.27 1.27)) (justify left top))
     )
     (instances
-      (project "rosco_m68k"
+      (project "solderdemon_m68k"
         (path "/9031bb33-c6aa-4758-bf5c-3274ed3ebab7" (page "5"))
       )
     )

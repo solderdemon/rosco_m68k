@@ -1,7 +1,7 @@
-# Firmware & Software
+# SolderDemon m68k firmware
 
-This directory contains the currently-supported release of the 
-rosco_m68k firmware.
+This directory contains the rosco_m68k firmware used by SolderDemon m68k.
+Its source names and firmware interfaces retain the upstream `rosco_m68k` identifiers.
 
 Depending on where we are in the development cycle, the development
 firmware may also be present here (with a name like `rosco_m68k_development`).

@@ -32,3 +32,7 @@ user.mk
 **/*.kicad_prl
 **/*-backups/
 **/*-cache.lib
+
+# KiCadRoutingTools logs written by design/tools/cpld_route.py
+design/kicad/routing/
+**/__pycache__/
